@@ -1,0 +1,299 @@
+<style>
+.car-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:.5px solid var(--color-border-tertiary);font-size:13px}
+.car-row:last-child{border-bottom:none}
+.price{font-weight:500;white-space:nowrap;margin-left:8px;color:var(--color-text-secondary);font-size:12px}
+.tier-block{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.8rem 1rem;margin-bottom:8px;background:var(--color-background-primary)}
+.tier-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.badge{font-size:11px;font-weight:500;padding:2px 8px;border-radius:var(--border-radius-md)}
+.cat-tab{font-size:13px;padding:6px 14px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;font-weight:400}
+.cat-tab.active{background:var(--color-background-primary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.cat-panel{display:none}.cat-panel.visible{display:block}
+.sub-filter{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.fbtn{font-size:11px;padding:3px 9px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer}
+.fbtn.active{background:var(--color-background-primary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.stats-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:12px}
+.stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px;text-align:center}
+.stat-label{font-size:10px;color:var(--color-text-secondary);text-transform:uppercase;margin-bottom:2px}
+.stat-val{font-size:13px;font-weight:500}
+.stat-sub{font-size:11px;color:var(--color-text-secondary)}
+</style>
+
+<h2 class="sr-only">Catalogue complet Premium Deluxe Motorsport par catégorie</h2>
+
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="cat-tabs">
+  <button class="cat-tab active" onclick="showCat('sc',this)">Sport Classique</button>
+  <button class="cat-tab" onclick="showCat('super',this)">Super</button>
+  <button class="cat-tab" onclick="showCat('sport',this)">Sportifs</button>
+</div>
+
+<!-- ===== SPORT CLASSIQUE ===== -->
+<div id="cat-sc" class="cat-panel visible">
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-label">Véhicules</div><div class="stat-val">24</div></div>
+    <div class="stat"><div class="stat-label">Moins cher</div><div class="stat-val">Manana</div><div class="stat-sub">23 040 $</div></div>
+    <div class="stat"><div class="stat-label">Plus cher</div><div class="stat-val">Z-Type</div><div class="stat-sub">2 700 000 $</div></div>
+  </div>
+  <div class="sub-filter">
+    <button class="fbtn active" onclick="filterSC('all',this)">Tout</button>
+    <button class="fbtn" onclick="filterSC('sc-entree',this)">Entrée &lt;200k</button>
+    <button class="fbtn" onclick="filterSC('sc-milieu',this)">Milieu 200k–700k</button>
+    <button class="fbtn" onclick="filterSC('sc-haut',this)">Haut 700k+</button>
+    <button class="fbtn" onclick="filterSC('sc-prestige',this)">Prestige 2M+</button>
+  </div>
+  <div id="sc-entree" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#EAF3DE;color:#3B6D11">Entrée</span><span style="font-size:12px;color:var(--color-text-secondary)">Moins de 200 000 $ — 8 véhicules</span></div>
+    <div class="car-row"><span>Manana</span><span class="price">23 040 $</span></div>
+    <div class="car-row"><span>Zion classique</span><span class="price">30 600 $</span></div>
+    <div class="car-row"><span>Pigalle</span><span class="price">36 000 $</span></div>
+    <div class="car-row"><span>Peyote</span><span class="price">50 400 $</span></div>
+    <div class="car-row"><span>Retinue Mk II</span><span class="price">63 000 $</span></div>
+    <div class="car-row"><span>Tornado custom</span><span class="price">90 000 $</span></div>
+    <div class="car-row"><span>Monroe</span><span class="price">99 000 $</span></div>
+    <div class="car-row"><span>Hotring Sabre</span><span class="price">117 000 $</span></div>
+  </div>
+  <div id="sc-milieu" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#FAEEDA;color:#854F0B">Milieu</span><span style="font-size:12px;color:var(--color-text-secondary)">200 000 $ – 700 000 $ — 10 véhicules</span></div>
+    <div class="car-row"><span>Stinger GT</span><span class="price">135 000 $</span></div>
+    <div class="car-row"><span>Stinger</span><span class="price">144 000 $</span></div>
+    <div class="car-row"><span>Rapid GT classique</span><span class="price">159 300 $</span></div>
+    <div class="car-row"><span>190z</span><span class="price">162 000 $</span></div>
+    <div class="car-row"><span>La Coureuse</span><span class="price">171 000 $</span></div>
+    <div class="car-row"><span>Coquette classique</span><span class="price">270 000 $</span></div>
+    <div class="car-row"><span>Dynasty</span><span class="price">315 000 $</span></div>
+    <div class="car-row"><span>Roosevelt</span><span class="price">396 000 $</span></div>
+    <div class="car-row"><span>Fränken Stange</span><span class="price">594 000 $</span></div>
+    <div class="car-row"><span>Casco / Roosevelt Valor / Swinger</span><span class="price">630 000 $</span></div>
+  </div>
+  <div id="sc-haut" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#FAECE7;color:#993C1D">Haut</span><span style="font-size:12px;color:var(--color-text-secondary)">700 000 $ – 1 999 000 $ — 1 véhicule</span></div>
+    <div class="car-row"><span>GT500</span><span class="price">900 000 $</span></div>
+  </div>
+  <div id="sc-prestige" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#EEEDFE;color:#534AB7">Prestige</span><span style="font-size:12px;color:var(--color-text-secondary)">2 000 000 $+ — 2 véhicules</span></div>
+    <div class="car-row"><span>Coquette D1</span><span class="price">2 400 000 $</span></div>
+    <div class="car-row"><span>Z-Type</span><span class="price">2 700 000 $</span></div>
+  </div>
+</div>
+
+<!-- ===== SUPER ===== -->
+<div id="cat-super" class="cat-panel">
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-label">Véhicules</div><div class="stat-val">57</div></div>
+    <div class="stat"><div class="stat-label">Moins cher</div><div class="stat-val">Turismo classique</div><div class="stat-sub">90 000 $</div></div>
+    <div class="stat"><div class="stat-label">Plus cher</div><div class="stat-val">Tigon / X80 Proto</div><div class="stat-sub">4 500 000 $</div></div>
+  </div>
+  <div class="sub-filter">
+    <button class="fbtn active" onclick="filterPanel('super','all',this)">Tout</button>
+    <button class="fbtn" onclick="filterPanel('super','s-entree',this)">Entrée &lt;500k</button>
+    <button class="fbtn" onclick="filterPanel('super','s-milieu',this)">Milieu 500k–999k</button>
+    <button class="fbtn" onclick="filterPanel('super','s-haut',this)">Haut 1M–2M</button>
+    <button class="fbtn" onclick="filterPanel('super','s-prestige',this)">Prestige 2M–3M</button>
+    <button class="fbtn" onclick="filterPanel('super','s-collection',this)">Collection 3M+</button>
+  </div>
+  <div id="s-entree" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#EAF3DE;color:#3B6D11">Entrée</span><span style="font-size:12px;color:var(--color-text-secondary)">&lt; 500 000 $ — 9 véhicules</span></div>
+    <div class="car-row"><span>Turismo classique</span><span class="price">90 000 $</span></div>
+    <div class="car-row"><span>Bullet</span><span class="price">162 000 $</span></div>
+    <div class="car-row"><span>Vacca</span><span class="price">216 000 $</span></div>
+    <div class="car-row"><span>Reaper</span><span class="price">270 000 $</span></div>
+    <div class="car-row"><span>Infernus</span><span class="price">324 000 $</span></div>
+    <div class="car-row"><span>Osiris</span><span class="price">342 000 $</span></div>
+    <div class="car-row"><span>Banshee 900R</span><span class="price">396 000 $</span></div>
+    <div class="car-row"><span>Cheetah</span><span class="price">396 000 $</span></div>
+    <div class="car-row"><span>ETR1</span><span class="price">396 000 $</span></div>
+  </div>
+  <div id="s-milieu" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#FAEEDA;color:#854F0B">Milieu</span><span style="font-size:12px;color:var(--color-text-secondary)">500 000 $ – 999 000 $ — 11 véhicules</span></div>
+    <div class="car-row"><span>Elegy rétro custom</span><span class="price">540 000 $</span></div>
+    <div class="car-row"><span>Jester classique</span><span class="price">540 000 $</span></div>
+    <div class="car-row"><span>Sultan RS</span><span class="price">540 000 $</span></div>
+    <div class="car-row"><span>RE-7B</span><span class="price">585 000 $</span></div>
+    <div class="car-row"><span>Turismo R</span><span class="price">612 000 $</span></div>
+    <div class="car-row"><span>Entity XF</span><span class="price">630 000 $</span></div>
+    <div class="car-row"><span>Zeno</span><span class="price">693 000 $</span></div>
+    <div class="car-row"><span>Zorrusso</span><span class="price">720 000 $</span></div>
+    <div class="car-row"><span>Comet rétro custom</span><span class="price">810 000 $</span></div>
+    <div class="car-row"><span>Adder</span><span class="price">900 000 $</span></div>
+    <div class="car-row"><span>T20</span><span class="price">900 000 $</span></div>
+  </div>
+  <div id="s-haut" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#FAECE7;color:#993C1D">Haut</span><span style="font-size:12px;color:var(--color-text-secondary)">1 000 000 $ – 1 999 000 $ — 16 véhicules</span></div>
+    <div class="car-row"><span>Tyrus</span><span class="price">1 080 000 $</span></div>
+    <div class="car-row"><span>Coquette D10</span><span class="price">1 170 000 $</span></div>
+    <div class="car-row"><span>811</span><span class="price">1 260 000 $</span></div>
+    <div class="car-row"><span>Zentorno</span><span class="price">1 260 000 $</span></div>
+    <div class="car-row"><span>FMJ</span><span class="price">1 350 000 $</span></div>
+    <div class="car-row"><span>SC1</span><span class="price">1 440 000 $</span></div>
+    <div class="car-row"><span>Torero XO</span><span class="price">1 440 000 $</span></div>
+    <div class="car-row"><span>Corsita</span><span class="price">1 530 000 $</span></div>
+    <div class="car-row"><span>Emerus</span><span class="price">1 530 000 $</span></div>
+    <div class="car-row"><span>Entity XXR</span><span class="price">1 530 000 $</span></div>
+    <div class="car-row"><span>Schlagen GT</span><span class="price">1 530 000 $</span></div>
+    <div class="car-row"><span>Autarch</span><span class="price">1 620 000 $</span></div>
+    <div class="car-row"><span>Voltic</span><span class="price">1 620 000 $</span></div>
+    <div class="car-row"><span>Cyclone</span><span class="price">1 710 000 $</span></div>
+    <div class="car-row"><span>Vagner</span><span class="price">1 800 000 $</span></div>
+    <div class="car-row"><span>XA-21</span><span class="price">1 800 000 $</span></div>
+  </div>
+  <div id="s-prestige" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#EEEDFE;color:#534AB7">Prestige</span><span style="font-size:12px;color:var(--color-text-secondary)">2 000 000 $ – 2 999 000 $ — 8 véhicules</span></div>
+    <div class="car-row"><span>Krieger</span><span class="price">2 160 000 $</span></div>
+    <div class="car-row"><span>Nero custom</span><span class="price">2 160 000 $</span></div>
+    <div class="car-row"><span>Entity MT</span><span class="price">2 250 000 $</span></div>
+    <div class="car-row"><span>Itali GTB</span><span class="price">2 250 000 $</span></div>
+    <div class="car-row"><span>Taipan</span><span class="price">2 340 000 $</span></div>
+    <div class="car-row"><span>Deveste Eight</span><span class="price">2 520 000 $</span></div>
+    <div class="car-row"><span>Furia</span><span class="price">2 520 000 $</span></div>
+    <div class="car-row"><span>Itali GTB custom</span><span class="price">2 700 000 $</span></div>
+  </div>
+  <div id="s-collection" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#FBEAF0;color:#993556">Collection</span><span style="font-size:12px;color:var(--color-text-secondary)">3 000 000 $+ — 13 véhicules</span></div>
+    <div class="car-row"><span>Penetrator</span><span class="price">3 150 000 $</span></div>
+    <div class="car-row"><span>GP1</span><span class="price">3 330 000 $</span></div>
+    <div class="car-row"><span>Ignus</span><span class="price">3 600 000 $</span></div>
+    <div class="car-row"><span>Itali RSX</span><span class="price">3 600 000 $</span></div>
+    <div class="car-row"><span>S80RR</span><span class="price">3 600 000 $</span></div>
+    <div class="car-row"><span>Turismo Omaggio</span><span class="price">3 600 000 $</span></div>
+    <div class="car-row"><span>Virtue</span><span class="price">3 937 500 $</span></div>
+    <div class="car-row"><span>LM87</span><span class="price">3 960 000 $</span></div>
+    <div class="car-row"><span>Visione</span><span class="price">4 050 000 $</span></div>
+    <div class="car-row"><span>Tezeract</span><span class="price">4 320 000 $</span></div>
+    <div class="car-row"><span>Thrax</span><span class="price">4 320 000 $</span></div>
+    <div class="car-row"><span>Tigon</span><span class="price">4 500 000 $</span></div>
+    <div class="car-row"><span>X80 Proto</span><span class="price">4 500 000 $</span></div>
+  </div>
+</div>
+
+<!-- ===== SPORTIFS ===== -->
+<div id="cat-sport" class="cat-panel">
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-label">Véhicules</div><div class="stat-val">78</div></div>
+    <div class="stat"><div class="stat-label">Moins cher</div><div class="stat-val">Sentinel classique</div><div class="stat-sub">19 500 $</div></div>
+    <div class="stat"><div class="stat-label">Plus cher</div><div class="stat-val">Paragon S</div><div class="stat-sub">3 150 000 $</div></div>
+  </div>
+  <div class="sub-filter">
+    <button class="fbtn active" onclick="filterPanel('sport','all',this)">Tout</button>
+    <button class="fbtn" onclick="filterPanel('sport','sp-entree',this)">Entrée &lt;100k</button>
+    <button class="fbtn" onclick="filterPanel('sport','sp-milieu',this)">Milieu 100k–499k</button>
+    <button class="fbtn" onclick="filterPanel('sport','sp-haut',this)">Haut 500k–999k</button>
+    <button class="fbtn" onclick="filterPanel('sport','sp-premium',this)">Premium 1M+</button>
+    <button class="fbtn" onclick="filterPanel('sport','sp-prestige',this)">Prestige 2M+</button>
+  </div>
+  <div id="sp-entree" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#EAF3DE;color:#3B6D11">Entrée</span><span style="font-size:12px;color:var(--color-text-secondary)">&lt; 100 000 $ — 19 véhicules</span></div>
+    <div class="car-row"><span>Sentinel classique</span><span class="price">19 500 $</span></div>
+    <div class="car-row"><span>Buffalo</span><span class="price">28 800 $</span></div>
+    <div class="car-row"><span>Issi sport</span><span class="price">30 600 $</span></div>
+    <div class="car-row"><span>Sentinel classique large</span><span class="price">45 000 $</span></div>
+    <div class="car-row"><span>Buffalo S</span><span class="price">46 800 $</span></div>
+    <div class="car-row"><span>Penumbra</span><span class="price">50 400 $</span></div>
+    <div class="car-row"><span>Raptor</span><span class="price">54 000 $</span></div>
+    <div class="car-row"><span>RT3000</span><span class="price">60 300 $</span></div>
+    <div class="car-row"><span>Futo</span><span class="price">63 000 $</span></div>
+    <div class="car-row"><span>Vectre</span><span class="price">66 600 $</span></div>
+    <div class="car-row"><span>Elegy RH8</span><span class="price">69 300 $</span></div>
+    <div class="car-row"><span>Seven-70</span><span class="price">71 100 $</span></div>
+    <div class="car-row"><span>Fusilade</span><span class="price">72 000 $</span></div>
+    <div class="car-row"><span>Lynx</span><span class="price">72 000 $</span></div>
+    <div class="car-row"><span>Schafter LWB</span><span class="price">72 000 $</span></div>
+    <div class="car-row"><span>Penumbra FF</span><span class="price">79 200 $</span></div>
+    <div class="car-row"><span>Surano</span><span class="price">90 000 $</span></div>
+    <div class="car-row"><span>Sultan</span><span class="price">93 600 $</span></div>
+    <div class="car-row"><span>Rapid GT</span><span class="price">99 000 $</span></div>
+  </div>
+  <div id="sp-milieu" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#FAEEDA;color:#854F0B">Milieu</span><span style="font-size:12px;color:var(--color-text-secondary)">100 000 $ – 499 000 $ — 33 véhicules</span></div>
+    <div class="car-row"><span>Feltzer</span><span class="price">111 600 $</span></div>
+    <div class="car-row"><span>9F</span><span class="price">117 000 $</span></div>
+    <div class="car-row"><span>Coquette</span><span class="price">117 000 $</span></div>
+    <div class="car-row"><span>Massacro</span><span class="price">117 000 $</span></div>
+    <div class="car-row"><span>ZR350</span><span class="price">117 000 $</span></div>
+    <div class="car-row"><span>Banshee</span><span class="price">126 000 $</span></div>
+    <div class="car-row"><span>Verlierer</span><span class="price">126 000 $</span></div>
+    <div class="car-row"><span>Khamelion</span><span class="price">135 000 $</span></div>
+    <div class="car-row"><span>Rapid GT (version 2)</span><span class="price">135 000 $</span></div>
+    <div class="car-row"><span>9F Cabrio</span><span class="price">144 000 $</span></div>
+    <div class="car-row"><span>Tampa drift</span><span class="price">144 000 $</span></div>
+    <div class="car-row"><span>Mamba</span><span class="price">162 000 $</span></div>
+    <div class="car-row"><span>Alpha</span><span class="price">189 000 $</span></div>
+    <div class="car-row"><span>Kuruma</span><span class="price">207 000 $</span></div>
+    <div class="car-row"><span>Omnis</span><span class="price">216 000 $</span></div>
+    <div class="car-row"><span>Sugoi</span><span class="price">222 000 $</span></div>
+    <div class="car-row"><span>Carbonizzare</span><span class="price">225 000 $</span></div>
+    <div class="car-row"><span>Massacro (course)</span><span class="price">234 000 $</span></div>
+    <div class="car-row"><span>Jester (course)</span><span class="price">243 000 $</span></div>
+    <div class="car-row"><span>Sultan classique</span><span class="price">270 000 $</span></div>
+    <div class="car-row"><span>Tailgater S</span><span class="price">270 000 $</span></div>
+    <div class="car-row"><span>Furore GT</span><span class="price">315 000 $</span></div>
+    <div class="car-row"><span>Tropos rallye</span><span class="price">315 000 $</span></div>
+    <div class="car-row"><span>Schafter V12</span><span class="price">342 000 $</span></div>
+    <div class="car-row"><span>10F large</span><span class="price">360 000 $</span></div>
+    <div class="car-row"><span>Issi rallye</span><span class="price">378 000 $</span></div>
+    <div class="car-row"><span>Jugular</span><span class="price">396 000 $</span></div>
+    <div class="car-row"><span>8F Drafter</span><span class="price">450 000 $</span></div>
+    <div class="car-row"><span>Jester</span><span class="price">450 000 $</span></div>
+    <div class="car-row"><span>Jester RR</span><span class="price">450 000 $</span></div>
+    <div class="car-row"><span>Streiter</span><span class="price">450 000 $</span></div>
+    <div class="car-row"><span>Calico GTF</span><span class="price">459 000 $</span></div>
+    <div class="car-row"><span>SM722</span><span class="price">486 000 $</span></div>
+  </div>
+  <div id="sp-haut" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#FAECE7;color:#993C1D">Haut</span><span style="font-size:12px;color:var(--color-text-secondary)">500 000 $ – 999 000 $ — 15 véhicules</span></div>
+    <div class="car-row"><span>Bestia GTS</span><span class="price">540 000 $</span></div>
+    <div class="car-row"><span>Euros</span><span class="price">558 000 $</span></div>
+    <div class="car-row"><span>GB200</span><span class="price">558 000 $</span></div>
+    <div class="car-row"><span>Panthere</span><span class="price">558 000 $</span></div>
+    <div class="car-row"><span>Comet</span><span class="price">630 000 $</span></div>
+    <div class="car-row"><span>Paragon R</span><span class="price">720 000 $</span></div>
+    <div class="car-row"><span>Sultan RS classique</span><span class="price">720 000 $</span></div>
+    <div class="car-row"><span>Cypher</span><span class="price">810 000 $</span></div>
+    <div class="car-row"><span>Flash GT</span><span class="price">810 000 $</span></div>
+    <div class="car-row"><span>Neo</span><span class="price">864 000 $</span></div>
+    <div class="car-row"><span>Specter</span><span class="price">900 000 $</span></div>
+    <div class="car-row"><span>Comet SR</span><span class="price">990 000 $</span></div>
+    <div class="car-row"><span>Growler</span><span class="price">990 000 $</span></div>
+    <div class="car-row"><span>Imorgon</span><span class="price">990 000 $</span></div>
+    <div class="car-row"><span>V-STR</span><span class="price">990 000 $</span></div>
+  </div>
+  <div id="sp-premium" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#EEEDFE;color:#534AB7">Premium</span><span style="font-size:12px;color:var(--color-text-secondary)">1 000 000 $ – 1 999 000 $ — 6 véhicules</span></div>
+    <div class="car-row"><span>Neon</span><span class="price">1 080 000 $</span></div>
+    <div class="car-row"><span>Comet S2</span><span class="price">1 170 000 $</span></div>
+    <div class="car-row"><span>Locust</span><span class="price">1 170 000 $</span></div>
+    <div class="car-row"><span>Comet S2 Cabrio</span><span class="price">1 215 000 $</span></div>
+    <div class="car-row"><span>Komoda</span><span class="price">1 350 000 $</span></div>
+    <div class="car-row"><span>Ruston</span><span class="price">1 350 000 $</span></div>
+  </div>
+  <div id="sp-prestige" class="tier-block">
+    <div class="tier-header"><span class="badge" style="background:#FBEAF0;color:#993556">Prestige</span><span style="font-size:12px;color:var(--color-text-secondary)">2 000 000 $+ — 5 véhicules</span></div>
+    <div class="car-row"><span>Itali GTO Stinger TT</span><span class="price">2 160 000 $</span></div>
+    <div class="car-row"><span>Raiden</span><span class="price">2 475 000 $</span></div>
+    <div class="car-row"><span>Revolter</span><span class="price">2 520 000 $</span></div>
+    <div class="car-row"><span>Pariah</span><span class="price">2 556 000 $</span></div>
+    <div class="car-row"><span>Paragon S</span><span class="price">3 150 000 $</span></div>
+  </div>
+</div>
+
+<script>
+function showCat(cat, btn) {
+  document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('visible'));
+  document.getElementById('cat-' + cat).classList.add('visible');
+}
+function filterSC(tier, btn) {
+  btn.closest('.cat-panel').querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  ['sc-entree','sc-milieu','sc-haut','sc-prestige'].forEach(t => {
+    document.getElementById(t).style.display = (tier === 'all' || tier === t) ? '' : 'none';
+  });
+}
+function filterPanel(cat, tier, btn) {
+  btn.closest('.cat-panel').querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const prefixes = {super: ['s-entree','s-milieu','s-haut','s-prestige','s-collection'], sport: ['sp-entree','sp-milieu','sp-haut','sp-premium','sp-prestige']};
+  prefixes[cat].forEach(t => {
+    document.getElementById(t).style.display = (tier === 'all' || tier === t) ? '' : 'none';
+  });
+}
+</script>
