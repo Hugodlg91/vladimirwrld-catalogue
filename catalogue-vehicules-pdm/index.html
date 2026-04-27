@@ -12,8 +12,8 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg:        #0a0a0a;
-      --surface:   #111111;
-      --surface2:  #161616;
+      --surface:   rgba(17,17,17,0.82);
+      --surface2:  rgba(24,24,24,0.88);
       --border:    #1e1e1e;
       --border2:   #2a2a2a;
       --gold:      #c9a84c;
@@ -39,11 +39,22 @@
       --radius:    8px;
       --radius-lg: 12px;
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; background: #0a0a0a; }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -20px;
+      z-index: -1;
+      background-image: url('../bg.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(12px) brightness(0.25);
+    }
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
+      background: transparent;
       color: var(--text);
+      position: relative;
       min-height: 100vh;
       font-size: 14px;
       line-height: 1.5;
